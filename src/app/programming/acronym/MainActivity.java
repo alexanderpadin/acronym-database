@@ -8,11 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -23,7 +21,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,16 +31,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class MainActivity extends ActionBarActivity {
 
 	EditText searchBar;
 	ImageButton cancelButton;
 	String DETAILS = "";
 	Context ctx = this;
-	
 	Map<String, String> dataMap;
-	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +55,15 @@ public class MainActivity extends ActionBarActivity {
         cancelButton = (ImageButton) findViewById(R.id.cancelButton);
         
         searchBar.addTextChangedListener(new TextWatcher(){
+            @SuppressLint({ "NewApi", "DefaultLocale" }) 
             public void afterTextChanged(Editable s) {
                 if(searchBar.getText().toString().length() > 0) {
                 	cancelButton.setImageResource(R.drawable.cancel);
+                	String acronymResult = dataMap.get((searchBar.getText().toString().toUpperCase()));
+                	
+                	if (acronymResult != null && !acronymResult.isEmpty()){
+                		Toast.makeText(getApplicationContext(), ""+ acronymResult, Toast.LENGTH_LONG).show();
+                	}
                  } else {
                 	 cancelButton.setImageResource(R.drawable.trasnparent); 
                  }
@@ -78,7 +78,6 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -251,7 +250,6 @@ public class MainActivity extends ActionBarActivity {
             super.onPostExecute(result);   
             if (result != null && !result.isEmpty()) {
             	if(!sameVersions(readFileData("data.txt"), result)) {
-                	//Toast.makeText(getApplicationContext(), "Diferent", Toast.LENGTH_LONG).show();
             		notifyUser();
             	}
             }    
