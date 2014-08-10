@@ -8,9 +8,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -21,6 +23,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,40 +96,19 @@ public class MainActivity extends ActionBarActivity {
     }
     
     private void prepareData() {
-
+    	dataMap = new HashMap<String, String>();
     	try {
 			JSONObject jObject = new JSONObject(readFileData("data.txt"));
-			
 			JSONArray jArray = jObject.getJSONArray("data"); 
-
-
-			
-			dataMap = new HashMap<String, String>();
-			String acronym = "";
-			String definition = "";
 			for (int i=0; i < jArray.length(); i++) {
 			    try {
 			        JSONObject oneObject = jArray.getJSONObject(i);
-			         acronym = oneObject.getString("acronym");
-			         definition = oneObject.getString("definition");
-
-			        dataMap.put(acronym, definition);
-			    } catch (JSONException e) {
-			        // Oops
-			    }
+			        dataMap.put(oneObject.getString("acronym"), oneObject.getString("definition"));
+			    } catch (JSONException e) {}
 			}
-			
-	    	Toast.makeText(getApplicationContext(), "" + acronym + " " + definition, Toast.LENGTH_SHORT).show();
-
-			
-			
-			
 		} catch (JSONException e) {
-	    	Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-
 			e.printStackTrace();
 		}
-    	
     }
     
     private boolean haveData() {
