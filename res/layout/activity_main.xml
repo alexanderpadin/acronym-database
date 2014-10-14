@@ -8,12 +8,15 @@
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:layout_marginTop="25dip"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dip"
         android:layout_marginRight="20dip"
-        android:padding="10dip"
-        android:background="@drawable/search_bar">
+        android:layout_marginTop="25dip"
+        android:background="@drawable/search_bar"
+        android:paddingBottom="10dip"
+        android:paddingTop="5dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
 
         <EditText
             android:id="@+id/id_search_EditText"
@@ -21,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/cancelButton"
+            android:layout_marginLeft="5dip"
             android:background="@android:color/white"
             android:drawableLeft="@drawable/search"
             android:drawableRight="@android:color/transparent"
@@ -34,14 +38,13 @@
             android:layout_alignBottom="@+id/id_search_EditText"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="0dip"
+            android:layout_marginRight="5dip"
             android:background="@null"
-            android:src="@drawable/trasnparent"
-            />
-        
+            android:src="@drawable/trasnparent" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -54,7 +57,7 @@
             android:layout_height="2dip"
             android:layout_centerVertical="true"
             android:layout_marginRight="0dip"
-            android:background="@drawable/line"/>
+            android:background="@drawable/line" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,10 +69,42 @@
             android:paddingLeft="2dip"
             android:paddingRight="2dip"
             android:text="@string/recent"
-            android:textColor="#999999"
-            android:textSize="10sp" />
-        
+            android:textColor="#999999"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/search_bar"
+        android:paddingTop="0dip"
+        android:paddingBottom="5dip"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <ListView 
+            android:id="@+id/listView_sugg"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" >
+		</ListView>
+
+        <TextView
+            android:id="@+id/not_sugg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dip"
+          	android:paddingBottom="10dip"
+          	android:gravity="center"
+            android:text="No Suggestions"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
     </RelativeLayout>
 
 </RelativeLayout>
-

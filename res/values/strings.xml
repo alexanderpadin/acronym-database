@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">programming_acronym</string>
+    <string name="app_name">Acronym++</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="recent">Recent</string>
+    <string name="recent">Suggestions</string>
     <string name="hint">Search...</string>
 
 </resources>
